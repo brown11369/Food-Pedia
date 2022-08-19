@@ -2,6 +2,7 @@ import './App.css'
 import Products from './components/Products'
 import {BrowserRouter,Route,Routes} from "react-router-dom"
 import Addfood from './components/Addfood';
+import Home from './components/Home';
 
 
 
@@ -12,8 +13,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Products />} />
-        <Route path='/addfood' element={<Addfood />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/wp-admin' element={<Products />} />
+        <Route path='/add-food' element={<Addfood />} />
       </Routes>
       </BrowserRouter>
       
