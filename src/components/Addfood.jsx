@@ -1,9 +1,32 @@
+import { useState, useEffect } from 'react'
 
 function Addfood() {
+
+    let [id, setID]=useState()
+
+    
+
+
+    useEffect(() => {
+        fetch("https://pms-api-food.herokuapp.com/products")
+            .then((response) => response.json())
+            .then((data) => {
+                let ro=data.map((e,i)=>{
+                    return e.id
+                })
+                setID(ro.pop())
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [])
+
+    
 
     let food={}
 
     function readvalue(poperty,value){
+        food.id=id+1
         food[poperty]=value
         console.log(food)
     }
@@ -29,9 +52,6 @@ function Addfood() {
     <div className="container">
         <h1 className='title'>Add Food Items</h1>
         <form className='form-container'>
-            <input type="number" placeholder='ID.'className='form-control' onChange={(e)=>{
-                readvalue("id",e.target.value)
-            }} />
             <input type="text" placeholder='Name'className='form-control' onChange={(e)=>{
                 readvalue("name",e.target.value)
             }} />
@@ -43,9 +63,6 @@ function Addfood() {
             }} />
             <input type="number" placeholder='Calories'className='form-control' onChange={(e)=>{
                 readvalue("calories",e.target.value)
-            }} />
-            <input type="text" placeholder="Nutritional" className='form-control' onChange={(e)=>{
-                readvalue("nutritional",e.target.value)
             }} />
             <input type="text" placeholder="Image Link" className='form-control' onChange={(e)=>{
                 readvalue("image",e.target.value)

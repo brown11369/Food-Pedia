@@ -10,7 +10,6 @@ function Products() {
         fetch("https://pms-api-food.herokuapp.com/products")
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 setFood(data)
             })
             .catch((err) => {
@@ -49,7 +48,6 @@ function Products() {
                         <tr>
                             <th>No.</th>
                             <th>Name</th>
-                            <th>Nutritional</th>
                             <th>Inredients</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -62,7 +60,6 @@ function Products() {
                                     <tr key={index}>
                                         <td>{1 + index}</td>
                                         <td>{ele.name}</td>
-                                        <td>{ele.nutritional}</td>
                                         <td>{ele.ingredients}</td>
                                         <td><p>Edit</p></td>
                                         <td><p style={{cursor: "pointer",fontWeight:"500"}} onClick={() => {
