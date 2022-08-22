@@ -31,12 +31,12 @@ function Home() {
                     </form>
                 </div>
             </nav>
-            <div className="container-fluid">
+            <div className="container-fluid" style={{backgroundColor:"#e7e7e7"}}>
                 <div className="d-flex justify-content-center gap-3 p-3 flex-row flex-wrap">
                     {
                         food.map((item, ind) => {
                             return (
-                                <div key={ind} className="card bg-light" style={{ width: "250px"}}>
+                                <div key={ind} className="card bg-light" style={{ width: "245px",boxShadow:"0px 0px 30px 2px rgba(0, 0, 0, 0.15)"}}>
                                     <img src={item.image} className="card-img-top img-fluid" alt="..." style={{ height: "150px" }} />
                                     <div className="card-body">
                                         <h5 className="card-title">{item.name}</h5>
