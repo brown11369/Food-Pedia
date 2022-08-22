@@ -42,7 +42,7 @@ function Home() {
                                         <h5 className="card-title">{item.name}</h5>
                                         <p className="card-text">{item.description}</p>
                                         <button onClick={() => {
-                                            show.current.className = "d-block h-100 container-fluid position-absolute top-0 start-0"
+                                            show.current.className = "d-block h-100 container-fluid position-fixed top-0 start-0"
                                             setDish(item);
                                             show.current.style.backgroundColor="rgba(0, 0, 0, 0.7)"
                                         }} className="btn btn-primary bg-success">View More</button>
