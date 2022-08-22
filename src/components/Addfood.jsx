@@ -1,34 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useRef} from 'react'
 
 function Addfood() {
 
-    let [id, setID]=useState()
 
+    let clear=useRef()
     
-
-
-    useEffect(() => {
-        fetch("https://pms-api-food.herokuapp.com/products")
-            .then((response) => response.json())
-            .then((data) => {
-                let ro=data.map((e,i)=>{
-                    return e.id
-                })
-                setID(ro.pop())
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
-
-    
-
     let food={}
 
     function readvalue(poperty,value){
-        food.id=id+1
         food[poperty]=value
-        console.log(food)
     }
     Addfood=()=>{
         fetch("https://pms-api-food.herokuapp.com/products",{
@@ -40,23 +20,32 @@ function Addfood() {
         })
         .then((response)=>response.json())
         .then((data)=>{
-            console.log(data)
+            if(data.success===true){
+                clear.current.reset();
+            }
         })
         .catch((err)=>{
             console.log(err)
         })
+    }
+
+    const submitHandler=(event)=>{
+        event.preventDefault();
     }
   
 
   return (
     <div className="container">
         <h1 className='title'>Add Food Items</h1>
-        <form className='form-container'>
+        <form ref={clear} className='form-container' onSubmit={submitHandler}>
             <input type="text" placeholder='Name'className='form-control' onChange={(e)=>{
                 readvalue("name",e.target.value)
             }} />
             <input type="text" placeholder='Ingredients'className='form-control' onChange={(e)=>{
                 readvalue("ingredients",e.target.value)
+            }} />
+            <input type="text" placeholder='Description'className='form-control' onChange={(e)=>{
+                readvalue("description",e.target.value)
             }} />
             <input type="text" placeholder='Directions'className='form-control' onChange={(e)=>{
                 readvalue("directions",e.target.value)
@@ -67,7 +56,7 @@ function Addfood() {
             <input type="text" placeholder="Image Link" className='form-control' onChange={(e)=>{
                 readvalue("image",e.target.value)
             }} />
-            <button type="button" onClick={()=>{
+            <button className="btn btn-primary bg-success" type="submit" onClick={()=>{
                 Addfood()
             }}>Add Food</button>
         </form>

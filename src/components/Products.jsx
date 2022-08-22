@@ -26,7 +26,7 @@ function Products() {
 
                 if (data.success === true) {
                     let newprod = [...food]
-                    delfood = newprod.findIndex((ele, index) => {
+                    let delfood = newprod.findIndex((ele) => {
                         return Number(id) === Number(ele.id)
                     })
                     newprod.splice(delfood, 1)
@@ -37,6 +37,8 @@ function Products() {
                 console.log(err)
             })
     }
+
+    
 
 
     return (
@@ -62,8 +64,11 @@ function Products() {
                                         <td>{ele.name}</td>
                                         <td>{ele.ingredients}</td>
                                         <td><p>Edit</p></td>
-                                        <td><p style={{cursor: "pointer",fontWeight:"500"}} onClick={() => {
-                                            delitem(ele.id)
+                                        <td><p style={{ cursor: "pointer", fontWeight: "500" }} onClick={() => {
+                                            let result = confirm("Are You Sure... Want to delete this?");
+                                            if (result) {
+                                                delitem(ele.id)
+                                            }
                                         }}>Delete</p></td>
                                     </tr>
                                 )

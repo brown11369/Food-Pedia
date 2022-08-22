@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react"
 
-
 function Home() {
+
+    
 
     let show = useRef();
 
@@ -31,11 +32,11 @@ function Home() {
                 </div>
             </nav>
             <div className="container-fluid">
-                <div className="d-flex justify-content-center gap-2 p-2 flex-row flex-wrap flex-md-nowrap">
+                <div className="d-flex justify-content-center gap-3 p-3 flex-row flex-wrap flex-md-nowrap">
                     {
                         food.map((item, ind) => {
                             return (
-                                <div key={ind} className="card">
+                                <div key={ind} className="card bg-light" style={{ width: "250px"}}>
                                     <img src={item.image} className="card-img-top img-fluid" alt="..." style={{ height: "150px" }} />
                                     <div className="card-body">
                                         <h5 className="card-title">{item.name}</h5>
@@ -44,7 +45,7 @@ function Home() {
                                             show.current.className = "d-block h-100 container-fluid position-absolute top-0 start-0"
                                             setDish(item);
                                             show.current.style.backgroundColor="rgba(0, 0, 0, 0.7)"
-                                        }} className="btn btn-primary">View More</button>
+                                        }} className="btn btn-primary bg-success">View More</button>
                                     </div>
                                 </div>
                             )
