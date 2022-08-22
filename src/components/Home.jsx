@@ -32,7 +32,7 @@ function Home() {
                 </div>
             </nav>
             <div className="container-fluid">
-                <div className="d-flex justify-content-center gap-3 p-3 flex-row flex-wrap flex-md-nowrap">
+                <div className="d-flex justify-content-center gap-3 p-3 flex-row flex-wrap">
                     {
                         food.map((item, ind) => {
                             return (
