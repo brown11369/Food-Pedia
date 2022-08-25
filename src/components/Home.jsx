@@ -42,7 +42,7 @@ function Home() {
                         <button onClick={() => {
                             if (searched !== null) {
                                 setShowFood(food.filter((e, i) => {
-                                    return e.ingredients.toLowerCase().includes(searched.toLowerCase()) || e.name.includes(searched)
+                                    return e.ingredients.toLowerCase().includes(searched.toLowerCase()) || e.name.toLowerCase().includes(searched.toLowerCase())
                                 }))
                             }
                             else{
