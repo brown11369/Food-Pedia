@@ -21,6 +21,7 @@ function Addfood() {
         .then((response)=>response.json())
         .then((data)=>{
             if(data.success===true){
+                food={}
                 clear.current.reset();
             }
         })
@@ -40,22 +41,22 @@ function Addfood() {
         <form ref={clear} className='form-container' onSubmit={submitHandler}>
             <input type="text" placeholder='Name'className='form-control' onChange={(e)=>{
                 readvalue("name",e.target.value)
-            }} />
+            }} required/>
             <input type="text" placeholder='Ingredients'className='form-control' onChange={(e)=>{
                 readvalue("ingredients",e.target.value)
-            }} />
+            }} required/>
             <input type="text" placeholder='Description'className='form-control' onChange={(e)=>{
                 readvalue("description",e.target.value)
-            }} />
+            }} required/>
             <input type="text" placeholder='Directions'className='form-control' onChange={(e)=>{
                 readvalue("directions",e.target.value)
-            }} />
+            }} required/>
             <input type="number" placeholder='Calories'className='form-control' onChange={(e)=>{
                 readvalue("calories",e.target.value)
             }} />
             <input type="text" placeholder="Image Link" className='form-control' onChange={(e)=>{
                 readvalue("image",e.target.value)
-            }} />
+            }} required/>
             <button className="btn btn-primary bg-success" type="submit" onClick={()=>{
                 Addfood()
             }}>Add Food</button>
