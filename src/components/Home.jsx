@@ -2,19 +2,12 @@ import { useState, useRef, useEffect } from "react"
 
 function Home() {
 
-
-
     let show = useRef();
-    // let back = useRef();
 
     let [food, setFood] = useState([])
     let [foodshow, setShowFood] = useState([])
     let [dish, setDish] = useState({})
     let [searched, setSearched] = useState({})
-
-
-
-
 
     useEffect(() => {
         fetch("https://pms-api-food.herokuapp.com/products")
@@ -52,7 +45,7 @@ function Home() {
                     </div>
                 </div>
             </nav>
-            <div className="container-fluid" style={{ backgroundColor: "#e7e7e7" }}>
+            <div className="container-fluid min-vh-100" style={{ backgroundColor: "#e7e7e7", backgroundImage:"url(https://i.pinimg.com/736x/fa/61/07/fa610763f8007b711ec710aef08b0e15.jpg)",backgroundAttachment:"fixed"}}>
                 <div className="d-flex justify-content-center gap-3 p-3 flex-row flex-wrap">
                     {
                         foodshow.map((item, ind) => {
@@ -76,16 +69,16 @@ function Home() {
             </div>
             <div ref={show} className="d-none">
                 <div className="d-flex justify-content-center flex-row flex-wrap flex-md-nowrap">
-                    <div className="card food-box m-5">
+                    <div className="card food-box m-5 p-2">
                         <div className="cross d-flex justify-content-end">
                             <i onClick={() => {
                                 show.current.className = "d-none"
                             }} className="fa-regular fa-circle-xmark text-danger h4"></i>
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">{dish.name}</h5>
-                            <p className="card-text">{dish.ingredients}</p>
-                            <p className="card-text">{dish.directions}</p>
+                            <h3 className="card-title">{dish.name}</h3>
+                            <p className="card-text"><b>Ingredients : </b>{dish.ingredients}</p>
+                            <p className="card-text"><b>Directions : </b>{dish.directions}</p>
                         </div>
 
                     </div>
