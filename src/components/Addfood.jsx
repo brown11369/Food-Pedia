@@ -40,7 +40,7 @@ function Addfood() {
         <h1 className='title'>Add Food Items</h1>
         <form ref={clear} className='form-container' onSubmit={submitHandler}>
             <input type="text" placeholder='Name'className='form-control' onChange={(e)=>{
-                readvalue("name",e.target.value)
+                readvalue("fname",e.target.value)
             }} required/>
             <input type="text" placeholder='Ingredients'className='form-control' onChange={(e)=>{
                 readvalue("ingredients",e.target.value)
